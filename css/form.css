@@ -350,8 +350,8 @@ button:hover .button-text {
 
   header img {
     position: fixed;
-    top: 10px; /* Ajuste este valor conforme necessário */
-    right: 37%;
+    top: 20px; /* Ajuste este valor conforme necessário */
+    right: 40%;
   }
 }
 
