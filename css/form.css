@@ -1,0 +1,345 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+:root {
+  --main-color: #012f9b;
+  --highligth-text: #f58634;
+  --white-color: #000000;
+ 
+}
+
+    body{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'poppins';
+        background-image: url(../img/Monitoramento\ de\ atividades\ \(3\).png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        overflow-y: hidden;
+        user-select: none;
+    }
+    
+    header img{
+       padding: 20px;
+        width: 220px;
+        margin-left: 40%;
+      position: relative;
+      top: 70%;
+        
+    }
+    h2{
+      text-align: center;
+      color:#fff;
+      text-shadow: 0 0 10px #9BE0E4;
+    }
+    .container{
+        width: 30%;
+        margin: 0 auto;
+        justify-content: center;
+        margin-top: 1%;
+        
+    }
+
+    div{
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.input{
+  height: 11px;
+  width: 97%;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: #000000;
+  color: #f7f7f7;
+  font-family: 'poppins';
+  box-shadow: 1px 1px 1px 1px #094be6;
+  border-color: #012f9b;
+}
+
+.labelInput{
+  pointer-events: none;
+ 
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 5px;
+  color: #efefef;
+  transition: 0.3s;
+}
+
+div input:focus + label, div input:valid + label{
+  font-size: 14px;
+  margin-top: -10px;
+  background-color: rgb(0, 0, 0);
+  padding-left: 5px;
+  padding-right: 5px;
+  color: rgb(255, 242, 242);
+  border-radius: 20px;
+
+  
+}
+
+input[type="text"]:focus, input[type="time"]:focus {
+  border-color: #3a34f5;
+  outline: none;
+}
+
+/* Estilo para campos de entrada desabilitados */
+input:disabled + label {
+  font-size: 14px;
+  margin-top: -10px;
+  background-color: rgb(0, 0, 0);
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #efefef; /* ou outra cor desejada */
+  border-radius: 20px;
+}
+
+
+
+.container-login-form-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+}
+
+.login-form-btn {
+  
+  font-family: "Poppins";
+  font-size: 16px;
+  color: rgb(246, 238, 238);
+  line-height: 1.2;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0px;
+  width: 87%;
+  height: 30px;
+  background-color: var(--main-color);
+  border-radius: 5px;
+  transition: all 0.4s;
+  border: none;
+  border-color: #012f9b;
+  top: -70px;
+
+}
+
+.login-form-btn:hover  {
+  background-color: var(--highligth-text);
+}
+
+
+   /* Estilos de exemplo para o modal */
+
+   .title-modal{
+    color:#f58634;
+
+   }
+
+
+   .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(69, 83, 110, 0.5);
+  }
+
+  .modal-content {
+    font-family: "Poppins";
+    background-color: #03040a9c;
+    width: 80%;
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 20px;
+    border-radius: 5px;
+    color:rgb(242, 242, 242) ;
+   
+  }
+  .close{
+    cursor: pointer;
+  }
+  .modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+
+  }
+  .employeeSelect{
+    font-family: "Poppins";
+    border-radius: 5px;
+    font-size: 15px;
+    border-color: #132f0f;
+    cursor: pointer;
+    
+  }
+
+  .employee-list {
+    
+    margin-bottom: 20px;
+  }
+
+  .employee-item {
+   
+    margin-bottom: 10px;
+  }
+
+  .search-input {
+   
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #fa1212;
+    border-radius: 10px;
+  }
+
+  .lupa{
+    width: 20px;
+    height: 20px;
+    align-self: flex-end;
+    margin-top: -30px;
+    cursor: pointer;
+  }
+
+  .select-btn {
+  
+    font-family: "Poppins";
+    font-size: 16px;
+    color: white;
+    line-height: 1.9;
+   margin-left: 50%;
+    padding: 0 30px;
+    width: 45%;
+    background-color:#270682;
+    border-radius:5px;
+    border-color: #4365b4;
+    cursor: pointer;
+  }
+
+ 
+  button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+   
+  }
+  button.learn-more {
+    width: 12rem;
+    height: auto;
+    align-self: end;
+    margin-top: 4%;
+  }
+  button.learn-more .circle {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: relative;
+    display: block;
+    margin: 0;
+    width: 3rem;
+    height: 3rem;
+    background: #012f9b;
+    border-radius: 1.625rem;
+ 
+  }
+  button.learn-more .circle .icon {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: #fff;
+  }
+  button.learn-more .circle .icon.arrow {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    left: 0.625rem;
+    width: 1.125rem;
+    height: 0.125rem;
+    background: none;
+  }
+  button.learn-more .circle .icon.arrow::before {
+    position: absolute;
+    content: "";
+    top: -0.25rem;
+    right: 0.0625rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-top: 0.125rem solid #fff;
+    border-right: 0.125rem solid #fff;
+    transform: rotate(45deg);
+  }
+  button.learn-more .button-text {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+ 
+    margin-bottom: 0;
+    padding: 0.75rem 0;
+    margin: 0 0 0 1.85rem;
+    color: #282936;
+    font-weight: 700;
+    line-height: 1.6;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  button:hover .circle {
+    width: 100%;
+  }
+  button:hover .circle .icon.arrow {
+    background: #fff;
+    transform: translate(1rem, 0);
+  }
+  button:hover .button-text {
+    color: #fff;
+  }
+  
+ 
+
+  @media(max-width:1200px){
+    .container{
+      width: 40%;
+      margin-top: 20%;
+    }
+   }
+
+   @media(max-width:1000px){
+    .container{
+      width: 50%;
+      margin-top: 30%;
+    }
+   }
+   @media(max-width:700px){
+    .container{
+      width: 80%;
+      margin-top: 30%;
+    
+    }
+   }
+
+ @media(max-width:500px){
+  .container{
+    width: 90%;
+    margin-top: 30%;
+  }
+ }
+ @media(max-width:380px){
+  .container{
+    width: 90%;
+    margin-top: 15%;
+    margin-left: -10px;
+  }
+ }
