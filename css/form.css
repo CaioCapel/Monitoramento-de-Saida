@@ -344,7 +344,7 @@ button:hover .button-text {
   .container {
     position: fixed;
     right: 15;
-    bottom: 20%;
+    bottom: 0;
     width: 80%;
   }
 
