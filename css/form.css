@@ -343,15 +343,15 @@ button:hover .button-text {
 @media (max-width: 700px) {
   .container {
     position: fixed;
-    right: 35%;
+    right: 15;
     bottom: 28%;
-    width: 60%;
+    width: 80%;
   }
 
   header img {
     position: fixed;
-    top: 20px; /* Ajuste este valor conforme necessário */
-    right: 40%;
+    top: 10px; /* Ajuste este valor conforme necessário */
+    right: 20%;
   }
 }
 
