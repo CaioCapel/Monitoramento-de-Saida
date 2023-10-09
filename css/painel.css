@@ -235,6 +235,17 @@ body{
       top: 10px;
       position: fixed;
 		}
+
+    @media (max-width: 1920px) {
+      .dashboard{
+        top: 250px;
+      }
+    }
+    @media (max-width: 1400px) {
+      .dashboard{
+        top: 170px;
+      }
+    }
   
   @media (max-width: 767px) {
     .dashboard{
