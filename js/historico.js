@@ -18,16 +18,16 @@ async function exibirHistorico() {
         
         // Botão para esconder o registro
         const hideButton = document.createElement("button");
-        hideButton.textContent = "Esconder";
+        hideButton.textContent = "Excluir";
         hideButton.addEventListener("click", async () => {
-          const shouldHide = window.confirm("Tem certeza que deseja esconder este registro?");
+          const shouldHide = window.confirm("Tem certeza que deseja excluir este registro?");
           if (shouldHide) {
             try {
               // Defina o campo "excluído" como true no Firestore em vez de excluir o documento
               await updateDoc(doc.ref, { excluído: true });
               exibirHistorico();
             } catch (error) {
-              console.error("Erro ao esconder registro:", error);
+              console.error("Erro ao excluir registro:", error);
             }
           }
         });
