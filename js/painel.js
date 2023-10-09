@@ -54,7 +54,7 @@ arrayDocumentos.forEach(doc_atual => {
 
 setInterval(function(){
   location.reload();
-}, 100000);
+}, 60000);
 
 
 //Pontuação
@@ -103,4 +103,3 @@ function updateTime() {
 	clockElement.innerText = `${hours}:${minutes}`;
 }
 
-setInterval(updateTime, 1000);
