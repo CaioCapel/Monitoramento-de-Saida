@@ -17,11 +17,16 @@ async function exibirHistorico() {
       const deleteButton = document.createElement("button");
       deleteButton.textContent = "Excluir";
       deleteButton.addEventListener("click", async () => {
-        try {
-          await deleteDoc(doc.ref);
-          exibirHistorico(); // Atualiza o histórico após a exclusão
-        } catch (error) {
-          console.error("Erro ao excluir registro:", error);
+        // Adicionar uma confirmação antes de excluir
+        const shouldDelete = window.confirm("Tem certeza que deseja excluir este registro?");
+        
+        if (shouldDelete) {
+          try {
+            await deleteDoc(doc.ref);
+            exibirHistorico(); // Atualiza o histórico após a exclusão
+          } catch (error) {
+            console.error("Erro ao excluir registro:", error);
+          }
         }
       });
 
