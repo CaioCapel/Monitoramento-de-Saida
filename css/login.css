@@ -6,10 +6,10 @@
 */
 
 :root {
-    --main-color: #f0c9fa;
+    --main-color: #012f9b;
     --link-color: #666666;
     --text1: #f8f8f8;
-    --highligth-text: #ffffff;
+    --highligth-text: #f58634;
     --input-text: #ffffff;
     --white-color: #00ccff59;
     --point-list: #CCCCCC;
@@ -255,7 +255,7 @@
     height: 50px;
     background-color: var(--main-color);
     border-radius: 5px;
-    color: #000;
+    color: #fff;
     transition: all 0.4s;
     font-weight: bolde;
   }
