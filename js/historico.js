@@ -1,5 +1,5 @@
 import { db } from "../js/firebase.js";
-import { collection, getDocs, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+import { collection, getDocs, doc, updateDoc } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
 
 // Função para exibir registros no histórico
 async function exibirHistorico() {
@@ -10,28 +10,31 @@ async function exibirHistorico() {
     const querySnapshot = await getDocs(collection(db, "registro"));
     querySnapshot.forEach((doc) => {
       const data = doc.data();
-      const listItem = document.createElement("li");
-      listItem.innerHTML = `${data.RE} - ${data.nome} - ${data.departamento} - ${data.hora}`;
-
-      // Botão para excluir o registro
-      const deleteButton = document.createElement("button");
-      deleteButton.textContent = "Excluir";
-      deleteButton.addEventListener("click", async () => {
-        // Adicionar uma confirmação antes de excluir
-        const shouldDelete = window.confirm("Tem certeza que deseja excluir este registro?");
+      
+      // Verifique se o campo "excluído" é verdadeiro antes de exibir o registro
+      if (!data.excluído) {
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `${data.RE} - ${data.nome} - ${data.departamento} - ${data.hora}`;
         
-        if (shouldDelete) {
-          try {
-            await deleteDoc(doc.ref);
-            exibirHistorico(); // Atualiza o histórico após a exclusão
-          } catch (error) {
-            console.error("Erro ao excluir registro:", error);
+        // Botão para esconder o registro
+        const hideButton = document.createElement("button");
+        hideButton.textContent = "Esconder";
+        hideButton.addEventListener("click", async () => {
+          const shouldHide = window.confirm("Tem certeza que deseja esconder este registro?");
+          if (shouldHide) {
+            try {
+              // Defina o campo "excluído" como true no Firestore em vez de excluir o documento
+              await updateDoc(doc.ref, { excluído: true });
+              exibirHistorico();
+            } catch (error) {
+              console.error("Erro ao esconder registro:", error);
+            }
           }
-        }
-      });
-
-      listItem.appendChild(deleteButton);
-      historicoList.appendChild(listItem);
+        });
+        
+        listItem.appendChild(hideButton);
+        historicoList.appendChild(listItem);
+      }
     });
   } catch (error) {
     console.error("Erro ao buscar registros:", error);

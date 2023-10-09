@@ -1,13 +1,17 @@
 import { db } from "../js/firebase.js";
-
-import { getDocs, collection, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+import { getDocs, collection, doc, updateDoc } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
 
 let dashboard = document.getElementById("dashboard")
 
 const colecao = collection(db, "registro")
 const arrayDocumentos = await getDocs(colecao)
 
-arrayDocumentos.forEach(doc_atual => {
+arrayDocumentos.forEach(async (doc_atual) => {
+  // Verifique se o campo "excluído" é verdadeiro antes de continuar
+  if (doc_atual.get("excluído") === true) {
+    // Se o registro estiver "escondido", pule esta iteração
+    return;
+  }
 
   let card = document.createElement("div")
   card.setAttribute("class", "card")
@@ -25,31 +29,19 @@ arrayDocumentos.forEach(doc_atual => {
   phora.innerHTML = doc_atual.get("hora")
 
   let img = document.createElement("img")
-
   img.setAttribute("id", doc_atual.id)
 
   img.addEventListener('click', async () => {
-
-    await deleteDoc(doc(db, "funcionario", event.target.id));
-    
-   
-    
+    // Atualize o campo "excluído" para true no Firestore em vez de excluir o documento
+    await updateDoc(doc(colecao, doc_atual.id), { excluído: true });
+    // Remova o elemento do DOM
+    card.remove();
   });
-
 
   card.append(h2, ptexto, phora, img)
   dashboard.append(card)
 
-
-
-  // document.getElementById("lixeira").addEventListener("click", async() =>{
-  //   await deleteDoc(doc(db, "funcionarios",));
-  //   })
-
-
-  // esconde a mensagem
-  document.querySelector('.mensagem').style.display = 'none';
-
+  // Resto do seu código...
 });
 
 setInterval(function(){
