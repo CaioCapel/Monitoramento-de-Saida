@@ -1,6 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'poppins';
+  background-image: url(../img/relogio.png);
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  user-select: none;
+  color: white;
+
+}
+
 /* Estilizando o cabeçalho */
 header {
-    background-color: #333;
     padding: 10px;
     text-align: center;
   }
@@ -30,7 +46,7 @@ header {
     border: 1px solid #ddd;
     margin: 10px 0;
     padding: 10px;
-    background-color: #f9f9f9;
+    background-color: #000;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -48,4 +64,43 @@ header {
   #historico-list button:hover {
     background-color: #d32f2f;
   }
+
+  /* Estilos para o botão "Voltar ao Formulário" */
+#voltarAoFormulario {
+  background-color: #012f9b; /* Cor de fundo do botão */
+  color: white; /* Cor do texto do botão */
+  border: none; /* Remove a borda do botão */
+  padding: 10px 20px; /* Espaçamento interno do botão */
+  cursor: pointer; /* Altera o cursor ao passar o mouse sobre o botão */
+  font-size: 16px; /* Tamanho da fonte */
+  border-radius: 5px; /* Borda arredondada */
+  left: 20px;
+  top: 20px;
+  position: fixed;
+}
+
+/* Estilos adicionais, como hover (quando o mouse passa sobre o botão) */
+#voltarAoFormulario:hover {
+  background-color: #f58634; /* Cor de fundo alterada ao passar o mouse */
+  transition: all 0.5s ease-in-out;
+}
+
+@media (max-width: 700px) {
+
+  #voltarAoFormulario{
+    left: 5px;
+    top: 20px;
+    width: 150px;
+  }
+
+  header img{
+    position: fixed;
+    top: 15px;
+  }
+
+  header{
+    margin-top: 30%;
+  }
+}
+
   

@@ -11,7 +11,7 @@ async function exibirHistorico() {
     querySnapshot.forEach((doc) => {
       const data = doc.data();
       const listItem = document.createElement("li");
-      listItem.innerHTML = `${data.RE} - ${data.nome} ${data.departamento} ${data.hora}`;
+      listItem.innerHTML = `${data.RE} - ${data.nome} - ${data.departamento} - ${data.hora}`;
 
       // Botão para excluir o registro
       const deleteButton = document.createElement("button");
@@ -32,6 +32,12 @@ async function exibirHistorico() {
     console.error("Erro ao buscar registros:", error);
   }
 }
+
+// Evento de clique no botão "Voltar ao Formulário"
+document.getElementById("voltarAoFormulario").addEventListener("click", function () {
+  // Redireciona o usuário para a página do formulário (substitua 'formulario.html' pelo caminho correto)
+  window.location.href = "form.html";
+});
 
 // Chama a função para exibir o histórico quando a página carrega
 exibirHistorico();
