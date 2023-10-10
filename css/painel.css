@@ -51,11 +51,11 @@ header{
     
 }
 .card h2 {
-    font-size: 20px;
+    font-size: 16px;
     margin-bottom: 5px;
 }
 .card p  {
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 10px;
     word-wrap: normal;
     width: 100%;
@@ -243,7 +243,12 @@ body{
     }
     @media (max-width: 1400px) {
       .dashboard{
-        top: 170px;
+        top: 90px;
+        height: 100%;
+      }
+
+      .card{
+        height: 15%;
       }
     }
   
