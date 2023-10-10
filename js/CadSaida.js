@@ -29,19 +29,18 @@ document.getElementById("RE").addEventListener("change", function () {
     });
 });
 
-// Define a hora atual
-const horaAtual = new Date();
-const hora = horaAtual.getHours();
-const minutos = horaAtual.getMinutes();
-const horaInput = document.getElementById('horario');
-horaInput.value = `${hora}:${minutos}`;
-
 // Evento de clique no botão "registrarsaida"
 document.getElementById("registrarsaida").addEventListener("click", function () {
   let RE = document.getElementById("RE").value;
   let nomefuncionario = document.getElementById("nome").value;
   let departamento = document.getElementById("departamento").value;
-  let horario = document.getElementById("horario").value;
+
+  // Define a hora atual
+  const horaAtual = new Date();
+  const hora = horaAtual.getHours();
+  const minutos = horaAtual.getMinutes();
+  const horario = `${hora}:${minutos}`;
+  
   alert(`${nomefuncionario} ${departamento} ${horario}`);
 
   setDoc(doc(db, "registro", RE), {
@@ -58,55 +57,6 @@ document.getElementById("registrarsaida").addEventListener("click", function () 
   document.getElementById("departamento").value = "";
   // Se você quiser manter a hora atual, remova a próxima linha
   document.getElementById("horario").value = "";
-
-
-  // Seleciona o modal
-  var modal = document.getElementById("myModal");
-
-  // Seleciona o botão que abre o modal
-  var btn = document.getElementById("myBtn");
-
-  // Seleciona o botão para selecionar o funcionário
-  var selectBtn = document.getElementById("selectButton");
-
-  // Seleciona o elemento select com os funcionários
-  var select = document.getElementById("employeeSelect");
-
-  // Seleciona o elemento input que receberá o valor selecionado
-  var input = document.getElementById("nome");
-
-  // Quando o usuário clicar no botão, abre o modal
-  btn.onclick = function () {
-    modal.style.display = "block";
-  };
-
-  // Quando o usuário clicar no botão de
-  selectBtn.onclick = function () {
-    // Atualiza o valor do input com o valor selecionado no select
-    input.value = select.value;
-
-    // Fecha o modal
-    modal.style.display = "none";
-  };
-
-  // Quando o usuário clicar no "x" para fechar o modal, fecha o modal
-  var span = document.getElementsByClassName("close")[0];
-  span.onclick = function () {
-    modal.style.display = "none";
-  };
-
-  // Quando o usuário clicar fora do modal, fecha o modal
-  window.onclick = function (event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  };
-
-  const horaAtual = new Date();
-  const hora = horaAtual.getHours();
-  const minutos = horaAtual.getMinutes();
-  const horaInput = document.getElementById('horario');
-  horaInput.value = `${hora}:${minutos}`;
 });
 
 // Evento de clique no botão "Acessar Histórico"

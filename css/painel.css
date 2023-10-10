@@ -249,6 +249,8 @@ body{
 
       .card{
         height: 15%;
+        margin: 5px;
+        padding: 5px;
       }
     }
   
