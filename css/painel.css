@@ -243,15 +243,15 @@ button:hover:active:before {
 @media (max-width: 767px) {
   .dashboard {
     position: fixed;
-    width: 84vh;
-    left: -20px;
+    width: 54vh;
+    left: -17px;
     height: 100%;
     top: 10%;
   }
 
   .card{
     height: auto;
-    width: 78vh;
+    width: 51vh;
     margin: 3px;
   }
 
