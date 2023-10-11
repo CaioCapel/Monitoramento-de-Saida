@@ -1,14 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;1,400&display=swap');
-
-body {
-  font-family: 'poppins';
-}
 
 
-header {
-  color: #f58634;
-  margin-bottom: 1%;
-}
+
 
 .dashboard {
   display: flex;
@@ -219,42 +211,34 @@ button:hover:active:before {
   line-height: 2;
 }
 
-.clock {
-  font-size: 2rem;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.473);
-  margin-left: 90%;
-  top: 10px;
-  position: fixed;
-}
-
-@media (max-width: 1920px) {
-  .dashboard {
-    top: 250px;
-  }
-}
-
-@media (max-width: 767px) {
-  .dashboard {
-    position: fixed;
-    width: 54vh;
-    left: -17px;
-    height: 100%;
-    top: 7%;
-  }
-
-  .card{
-    height: auto;
-    width: 51vh;
-    margin: 3px;
-  }
-
-  
-}
 
 .text-container {
   display: flex;
   justify-content: space-between; /* Isso alinha "departamento" e "hora" horizontalmente */
   align-items: center;
   margin-bottom: 10px;
+}
+
+.texto{
+  font-size: 24px;
+  text-transform: uppercase;
+  font-weight: 800;
+  background: linear-gradient(45deg, #00E3CC, #0084ff, #009688,#44E3D3);
+  background-size: 400% 100%;
+  animation: degrade 10s linear infinite alternate;
+  margin-left: -170px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  outline: none;
+}
+
+@keyframes degrade {
+  0%{
+      background-position-x: 0%;
+  }
+
+  100%{
+      background-position: 400%;
+  }
 }
