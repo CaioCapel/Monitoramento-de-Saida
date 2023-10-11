@@ -22,8 +22,7 @@ header {
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.5);
   width: 41%;
-  top: 170px;
-  left: 10%;
+  left: 0;
   position: fixed;
   overflow: auto;
 }
@@ -40,8 +39,7 @@ header {
 .card {
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
-  padding: 20px;
-  margin: 10px 0;
+  padding: 5px;
   border-radius: 5px;
   border: 1px solid #015367;
   text-transform: uppercase;
@@ -54,14 +52,11 @@ header {
 }
 
 .card h2 {
-  font-size: 16px;
-  margin-bottom: 5px;
+  font-size: 18px;
 }
 
 .card p {
-  font-size: 18px;
-  margin-bottom: 10px;
-  word-wrap: normal;
+  font-size: auto;
   width: 100%;
 }
 
@@ -248,16 +243,24 @@ button:hover:active:before {
 @media (max-width: 767px) {
   .dashboard {
     position: fixed;
-    right: 0px;
-    width: 400px;
+    width: auto;
+    left: -20px;
+    height: 100%;
+    top: 10%;
+  }
+
+  .card{
+    height: auto;
+    width: 100%;
+    margin: 3px;
   }
 
   .logo {
     position: fixed;
     left: 25%;
+    top: 0;
   }
 }
-
 
 .text-container {
   display: flex;

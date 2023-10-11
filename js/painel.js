@@ -6,6 +6,8 @@ let dashboard = document.getElementById("dashboard")
 const colecao = collection(db, "registro")
 const arrayDocumentos = await getDocs(colecao)
 
+// ...
+
 arrayDocumentos.forEach(async (doc_atual) => {
   if (doc_atual.get("excluído") === true) {
     return;
@@ -23,11 +25,9 @@ arrayDocumentos.forEach(async (doc_atual) => {
 
   let ptexto = document.createElement("p");
   ptexto.setAttribute("class", "ptexto");
-  ptexto.innerHTML = `Foi Para - ${doc_atual.get("departamento")}`;
 
-  let phora = document.createElement("p");
-  phora.setAttribute("class", "hora");
-  phora.innerHTML = doc_atual.get("hora");
+  // Aqui você concatena o texto desejado entre a hora e o departamento
+  ptexto.innerHTML = `Foi para - ${doc_atual.get("departamento")} às - ${doc_atual.get("hora")} hrs`;
 
   let img = document.createElement("img");
   img.setAttribute("id", doc_atual.id);
@@ -37,11 +37,14 @@ arrayDocumentos.forEach(async (doc_atual) => {
     card.remove();
   });
 
-  textContainer.append(ptexto, phora); // Adicione "departamento" e "hora" ao contêiner
+  textContainer.append(ptexto); // Adicione o texto ao contêiner
   card.append(h2, textContainer, img);
   dashboard.append(card);
   // Resto do seu código...
 });
+
+// ...
+
 
 setInterval(function(){
   location.reload();
@@ -85,12 +88,3 @@ closeMenuBtn.addEventListener('click', () => {
 
   document.getElementById("lista-itens").innerHTML = null
 });
-
-function updateTime() {
-	const clockElement = document.getElementById('clock');
-	const currentTime = new Date();
-	const hours = currentTime.getHours();
-	const minutes = currentTime.getMinutes();
-	clockElement.innerText = `${hours}:${minutes}`;
-}
-
