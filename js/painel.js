@@ -27,7 +27,7 @@ arrayDocumentos.forEach(async (doc_atual) => {
   ptexto.setAttribute("class", "ptexto");
 
   // Aqui você concatena o texto desejado entre a hora e o departamento
-  ptexto.innerHTML = `Foi para - ${doc_atual.get("departamento")} às - ${doc_atual.get("hora")} hrs`;
+  ptexto.innerHTML = `Foi para - ${doc_atual.get("departamento")} às - ${doc_atual.get("hora")}`;
 
   let img = document.createElement("img");
   img.setAttribute("id", doc_atual.id);
