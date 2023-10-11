@@ -4,12 +4,6 @@ body {
   font-family: 'poppins';
 }
 
-.logo {
-  position: fixed;
-  top: 10px;
-  left: 52%;
-  width: 220px;
-}
 
 header {
   color: #f58634;
@@ -73,7 +67,7 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background-image: url(../img/MONITORAMENTO\ DE\ SAIDA.jpg);
+  background-image: url(../img/CONTROLE\ DE\ SAIDA.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -255,11 +249,7 @@ button:hover:active:before {
     margin: 3px;
   }
 
-  .logo {
-    position: fixed;
-    left: 25%;
-    top: 0;
-  }
+  
 }
 
 .text-container {
