@@ -39,8 +39,13 @@ document.getElementById("registrarsaida").addEventListener("click", function () 
   const horaAtual = new Date();
   const hora = horaAtual.getHours();
   const minutos = horaAtual.getMinutes();
-  const horario = `${hora}:${minutos}`;
-  
+
+  // Formate a hora e os minutos com zero à esquerda, se necessário
+  const horaFormatada = hora.toString().padStart(2, '0');
+  const minutosFormatados = minutos.toString().padStart(2, '0');
+
+  const horario = `${horaFormatada}:${minutosFormatados}`;
+
   alert(`${nomefuncionario} ${departamento} ${horario}`);
 
   setDoc(doc(db, "registro", RE), {

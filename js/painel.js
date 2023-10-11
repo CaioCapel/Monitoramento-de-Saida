@@ -26,8 +26,13 @@ arrayDocumentos.forEach(async (doc_atual) => {
   let ptexto = document.createElement("p");
   ptexto.setAttribute("class", "ptexto");
 
+  // Formate a hora com zero à esquerda, se necessário
+  const hora = doc_atual.get("hora");
+  const [horas, minutos] = hora.split(":"); // Divide a hora e os minutos
+  const horaFormatada = `${horas.padStart(2, '0')}:${minutos.padStart(2, '0')}`;
+
   // Aqui você concatena o texto desejado entre a hora e o departamento
-  ptexto.innerHTML = `Foi para - ${doc_atual.get("departamento")} às - ${doc_atual.get("hora")}`;
+  ptexto.innerHTML = `Foi para - ${doc_atual.get("departamento")} às - ${horaFormatada}`;
 
   let img = document.createElement("img");
   img.setAttribute("id", doc_atual.id);
@@ -42,7 +47,6 @@ arrayDocumentos.forEach(async (doc_atual) => {
   dashboard.append(card);
   // Resto do seu código...
 });
-
 // ...
 
 
