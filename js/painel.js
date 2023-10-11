@@ -7,40 +7,39 @@ const colecao = collection(db, "registro")
 const arrayDocumentos = await getDocs(colecao)
 
 arrayDocumentos.forEach(async (doc_atual) => {
-  // Verifique se o campo "excluído" é verdadeiro antes de continuar
   if (doc_atual.get("excluído") === true) {
-    // Se o registro estiver "escondido", pule esta iteração
     return;
   }
 
-  let card = document.createElement("div")
-  card.setAttribute("class", "card")
+  let card = document.createElement("div");
+  card.setAttribute("class", "card");
 
-  let h2 = document.createElement("h2")
-  h2.setAttribute("class", "h2nome")
-  h2.innerHTML = doc_atual.get("nome")
+  let h2 = document.createElement("h2");
+  h2.setAttribute("class", "h2nome");
+  h2.innerHTML = doc_atual.get("nome");
 
-  let ptexto = document.createElement("p")
-  ptexto.setAttribute("class", "ptexto")
-  ptexto.innerHTML = `Foi Para - ${doc_atual.get("departamento")}`
+  let textContainer = document.createElement("div"); // Contêiner para "departamento" e "hora"
+  textContainer.setAttribute("class", "text-container");
 
-  let phora = document.createElement("p")
-  phora.setAttribute("class", "hora")
-  phora.innerHTML = doc_atual.get("hora")
+  let ptexto = document.createElement("p");
+  ptexto.setAttribute("class", "ptexto");
+  ptexto.innerHTML = `Foi Para - ${doc_atual.get("departamento")}`;
 
-  let img = document.createElement("img")
-  img.setAttribute("id", doc_atual.id)
+  let phora = document.createElement("p");
+  phora.setAttribute("class", "hora");
+  phora.innerHTML = doc_atual.get("hora");
+
+  let img = document.createElement("img");
+  img.setAttribute("id", doc_atual.id);
 
   img.addEventListener('click', async () => {
-    // Atualize o campo "excluído" para true no Firestore em vez de excluir o documento
     await updateDoc(doc(colecao, doc_atual.id), { excluído: true });
-    // Remova o elemento do DOM
     card.remove();
   });
 
-  card.append(h2, ptexto, phora, img)
-  dashboard.append(card)
-
+  textContainer.append(ptexto, phora); // Adicione "departamento" e "hora" ao contêiner
+  card.append(h2, textContainer, img);
+  dashboard.append(card);
   // Resto do seu código...
 });
 

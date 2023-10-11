@@ -1,25 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;1,400&display=swap');
 
-body{
-    font-family: 'poppins';  
+body {
+  font-family: 'poppins';
 }
 
- .logo{
+.logo {
   position: fixed;
-  top: 10px; /* Define a posição vertical em relação ao topo da janela de visualização */
+  top: 10px;
   left: 52%;
   width: 220px;
- }
+}
 
-.ti
-header{
-    color: #f58634;
-    margin-bottom: 1%;
+header {
+  color: #f58634;
+  margin-bottom: 1%;
 }
 
 .dashboard {
-  display: flex; /* Alterado para flex */
-  flex-direction: column; /* Para criar uma lista vertical */
+  display: flex;
+  flex-direction: column;
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.5);
   width: 41%;
@@ -30,195 +29,172 @@ header{
 }
 
 .dashboard::-webkit-scrollbar {
-  width: 5px; /* Define a largura da barra de rolagem */
-  background-color: rgb(7, 77, 77); /* Define a tonalidade escura de fundo */
+  width: 5px;
+  background-color: rgb(7, 77, 77);
 }
 
 .dashboard::-webkit-scrollbar-thumb {
-  background-color: rgb(33,206,206); /* Define a tonalidade escura do preenchimento da barra de rolagem */
+  background-color: rgb(33, 206, 206);
 }
 
 .card {
   background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding:20px;
-    height: 150px;
-    width: 100%;
-    border-radius: 5px;
-    border: 1px solid #015367;
-    transition: transform 0.3s ease-in-out;
-    text-transform: uppercase;
-    
+  color: white;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #015367;
+  text-transform: uppercase;
+  cursor: pointer;
 }
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
 .card h2 {
-    font-size: 16px;
-    margin-bottom: 5px;
-}
-.card p  {
-    font-size: 18px;
-    margin-bottom: 10px;
-    word-wrap: normal;
-    width: 100%;
+  font-size: 16px;
+  margin-bottom: 5px;
 }
 
-
-.card:hover{
-
-    transform: translateY(-5px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+.card p {
+  font-size: 18px;
+  margin-bottom: 10px;
+  word-wrap: normal;
+  width: 100%;
 }
 
-
-*{
-    margin: 0;
-    padding: 0;
-    padding-top: 2px;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  padding-top: 2px;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-body{
-    display: flex;
-    justify-content:center;
-    flex-direction: column;
-    align-items: center;
-    background-image: url(../img/MONITORAMENTO\ DE\ SAIDA.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    }
-
-    button{
-      position: relative;
-      height: 60px;
-      width: 150px;
-      border: none;
-      outline: none;
-      color: white;
-      background: #111;
-      cursor: pointer;
-      border-radius: 5px;
-      font-size: 18px;
-      font-family: 'Raleway', sans-serif;
-    }
-    button:before{
-      position: absolute;
-      content: '';
-      top: -2px;
-      left: -2px;
-      height: calc(100% + 4px);
-      width: calc(100% + 4px);
-      border-radius: 5px;
-      z-index: -1;
-      opacity: 0;
-      filter: blur(5px);
-      background: linear-gradient(45deg, #9bd3e3, #334dff, #1a2c80, #0e1a5b, #040f3e, #00051f);  
-      background-size: 400%;
-      transition: opacity .3s ease-in-out;
-      animation: animate 20s linear infinite;
-    }
-    button:hover:before{
-      opacity: 1;
-    }
-    button:hover:active{
-      background: none;
-    }
-    button:hover:active:before{
-      filter: blur(2px);
-    }
-    @keyframes animate {
-      0% { background-position: 0 0; }
-      50% { background-position: 400% 0; }
-      100% { background-position: 0 0; }
-    }
-
-.dot{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(../img/MONITORAMENTO\ DE\ SAIDA.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
-.dot::before{
-    content: '';
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    background: var(--clr);
-    border-radius: 50%;
-    box-shadow: 0 0 20px var(--clr);
+button {
+  height: 60px;
+  width: 150px;
+  border: none;
+  outline: none;
+  color: white;
+  background: #111;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 18px;
+  font-family: 'Raleway', sans-serif;
+}
+
+button:before {
+  position: absolute;
+  content: '';
+  top: -2px;
+  left: -2px;
+  height: calc(100% + 4px);
+  width: calc(100% + 4px);
+  border-radius: 5px;
+  z-index: -1;
+  opacity: 0;
+  filter: blur(5px);
+  background: linear-gradient(45deg, #9bd3e3, #334dff, #1a2c80, #0e1a5b, #040f3e, #00051f);
+  background-size: 400%;
+  transition: opacity .3s ease-in-out;
+  animation: animate 20s linear infinite;
+}
+
+button:hover:before {
+  opacity: 1;
+}
+
+button:hover:active {
+  background: none;
+}
+
+button:hover:active:before {
+  filter: blur(2px);
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.dot {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+}
+
+.dot::before {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: var(--clr);
+  border-radius: 50%;
+  box-shadow: 0 0 20px var(--clr);
 }
 
 #reload-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    z-index: 99999;
-    opacity: 1;
-    transition: opacity 1s ease-in-out;
-  }
-  
-  #reload-container.hide {
-    opacity: 0;
-  }
-  
-  /*=================Botao pontuação==================*/
-
-  .menu-container {
-    position: fixed;
-    top: -10px;
-    left: -350px;
-    width: 340px;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.644);
-    color: white;
-    z-index: 1;
-    transition: all 0.3s ease;
-  }
-  
-  .menu-container.open {
-    left: 0;
-  }
-  
-  .menu {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .menu li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-    line-height: 2;
-  }
-  
-  .menu li span:first-child {
-    font-weight: bold;
-    margin-right: 10px;
-  }
- 
-  .close-menu-btn {
-    position: absolute;
-    top: 25px;
-    margin-left: 35px;
-  }
-
-  .desclist{
-    font-size: larger; 
-    margin-top: 5px;
-    margin-left:40px;
-    font-weight: bold;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 99999;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
 }
 
-.linha{
+#reload-container.hide {
+  opacity: 0;
+}
+
+.menu-container {
+  position: fixed;
+  top: -10px;
+  left: -350px;
+  width: 340px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.644);
+  color: white;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.menu-container.open {
+  left: 0;
+}
+
+.menu {
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -227,42 +203,65 @@ body{
   line-height: 2;
 }
 
-		.clock {
-			font-size: 2rem;
-			font-weight: bold;
-      color: rgba(255, 255, 255, 0.473);
-      margin-left: 90%;
-      top: 10px;
-      position: fixed;
-		}
+.menu li span:first-child {
+  font-weight: bold;
+  margin-right: 10px;
+}
 
-    @media (max-width: 1920px) {
-      .dashboard{
-        top: 250px;
-      }
-    }
-    @media (max-width: 1400px) {
-      .dashboard{
-        top: 90px;
-        height: 100%;
-      }
+.close-menu-btn {
+  position: absolute;
+  top: 25px;
+  margin-left: 35px;
+}
 
-      .card{
-        height: 15%;
-        margin: 5px;
-        padding: 5px;
-      }
-    }
-  
-  @media (max-width: 767px) {
-    .dashboard{
-      position: fixed;
-      right: 0px;
-      width: 400px;
-    }
+.desclist {
+  font-size: larger;
+  margin-top: 5px;
+  margin-left: 40px;
+  font-weight: bold;
+}
 
-    .logo{
-      position: fixed;
-      left: 25%;
-    }
+.linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  line-height: 2;
+}
+
+.clock {
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.473);
+  margin-left: 90%;
+  top: 10px;
+  position: fixed;
+}
+
+@media (max-width: 1920px) {
+  .dashboard {
+    top: 250px;
   }
+}
+
+@media (max-width: 767px) {
+  .dashboard {
+    position: fixed;
+    right: 0px;
+    width: 400px;
+  }
+
+  .logo {
+    position: fixed;
+    left: 25%;
+  }
+}
+
+
+.text-container {
+  display: flex;
+  justify-content: space-between; /* Isso alinha "departamento" e "hora" horizontalmente */
+  align-items: center;
+  margin-bottom: 10px;
+}
