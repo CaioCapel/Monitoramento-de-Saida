@@ -32,7 +32,7 @@ arrayDocumentos.forEach(async (doc_atual) => {
   const horaFormatada = `${horas.padStart(2, '0')}:${minutos.padStart(2, '0')}`;
 
   // Aqui você concatena o texto desejado entre a hora e o departamento
-  ptexto.innerHTML = `Foi para - ${doc_atual.get("departamento")} - às  ${horaFormatada}`;
+  ptexto.innerHTML = `Foi para - ${doc_atual.get("departamento")} - às  ${horaFormatada} hrs`;
 
   let img = document.createElement("img");
   img.setAttribute("id", doc_atual.id);
