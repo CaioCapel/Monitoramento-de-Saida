@@ -7,7 +7,8 @@
   flex-direction: column;
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.5);
-  width: 41%;
+  width: 100%;
+  top: 7%;
   left: 0;
   position: fixed;
   overflow: auto;
@@ -26,9 +27,11 @@
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   padding: 5px;
+  margin: 2px;
   border-radius: 5px;
   border: 1px solid #015367;
   cursor: pointer;
+  
 }
 
 .card:hover {
@@ -220,7 +223,7 @@ button:hover:active:before {
 }
 
 .texto{
-  font-size: 24px;
+  font-size: 37px;
   text-transform: uppercase;
   font-weight: 800;
   background: linear-gradient(45deg, #00E3CC, #0084ff, #009688,#44E3D3);
@@ -229,7 +232,7 @@ button:hover:active:before {
   margin-left: -170px;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
+  margin-left: 1%;
   outline: none;
 }
 
