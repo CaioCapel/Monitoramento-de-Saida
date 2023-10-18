@@ -351,7 +351,7 @@ button:hover .button-text {
 
   header img {
     position: fixed;
-    top: 10px; /* Ajuste este valor conforme necessário */
+    top: 0;/* Ajuste este valor conforme necessário */
     right: 20%;
   }
 
