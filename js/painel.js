@@ -3,56 +3,78 @@ import { getDocs, collection, doc, updateDoc } from "https://www.gstatic.com/fir
 
 let dashboard = document.getElementById("dashboard")
 
-const colecao = collection(db, "registro")
-const arrayDocumentos = await getDocs(colecao)
+const colecao = collection(db, "registro");
 
-// ...
+// Função para formatar a hora
+function formatHora(hora) {
+  const [horas, minutos] = hora.split(":");
+  return `${horas.padStart(2, '0')}:${minutos.padStart(2, '0')}`;
+}
 
-arrayDocumentos.forEach(async (doc_atual) => {
-  if (doc_atual.get("excluído") === true) {
-    return;
-  }
+async function renderizarDashboard() {
+  const arrayDocumentos = await getDocs(colecao);
 
-  let card = document.createElement("div");
-  card.setAttribute("class", "card");
-
-  let h2 = document.createElement("h2");
-  h2.setAttribute("class", "h2nome");
-  h2.innerHTML = doc_atual.get("nome");
-
-  let textContainer = document.createElement("div"); // Contêiner para "departamento" e "hora"
-  textContainer.setAttribute("class", "text-container");
-
-  let ptexto = document.createElement("p");
-  ptexto.setAttribute("class", "ptexto");
-
-  // Formate a hora com zero à esquerda, se necessário
-  const hora = doc_atual.get("hora");
-  const [horas, minutos] = hora.split(":"); // Divide a hora e os minutos
-  const horaFormatada = `${horas.padStart(2, '0')}:${minutos.padStart(2, '0')}`;
-
-  // Aqui você concatena o texto desejado entre a hora e o departamento
-  ptexto.innerHTML = `Foi para - ${doc_atual.get("departamento")} - às  ${horaFormatada} hrs`;
-
-  let img = document.createElement("img");
-  img.setAttribute("id", doc_atual.id);
-
-  img.addEventListener('click', async () => {
-    await updateDoc(doc(colecao, doc_atual.id), { excluído: true });
-    card.remove();
+  // Coletar documentos e criar um array de objetos
+  const registros = [];
+  arrayDocumentos.forEach((doc_atual) => {
+    if (doc_atual.get("excluído") === true) {
+      return;
+    }
+    registros.push({
+      nome: doc_atual.get("nome"),
+      departamento: doc_atual.get("departamento"),
+      hora: formatHora(doc_atual.get("hora")),
+      id: doc_atual.id
+    });
   });
 
-  textContainer.append(ptexto); // Adicione o texto ao contêiner
-  card.append(h2, textContainer, img);
-  dashboard.append(card);
-  // Resto do seu código...
-});
-// ...
+  // Ordenar o array de objetos com base na hora
+  registros.sort((a, b) => {
+    return a.hora.localeCompare(b.hora);
+  });
 
+  // Limpar o dashboard antes de renderizar novamente
+  dashboard.innerHTML = "";
+
+  // Criar elementos HTML a partir do array ordenado
+  registros.forEach((registro) => {
+    let card = document.createElement("div");
+    card.setAttribute("class", "card");
+
+    let h2 = document.createElement("h2");
+    h2.setAttribute("class", "h2nome");
+    h2.innerHTML = registro.nome;
+
+    let textContainer = document.createElement("div");
+    textContainer.setAttribute("class", "text-container");
+
+    let ptexto = document.createElement("p");
+    ptexto.setAttribute("class", "ptexto");
+    ptexto.innerHTML = `Foi para - ${registro.departamento} - às ${registro.hora} hrs`;
+
+    let img = document.createElement("img");
+    img.setAttribute("id", registro.id);
+
+    img.addEventListener('click', async () => {
+      // Atualize o documento conforme necessário
+      await updateDoc(colecao, registro.id, { excluído: true });
+      card.remove();
+    });
+
+    textContainer.append(ptexto);
+    card.append(h2, textContainer, img);
+    dashboard.append(card);
+  });
+}
+
+// Chame a função para renderizar o dashboard inicial
+renderizarDashboard();
 
 setInterval(function(){
-  location.reload();
+  // Atualize o dashboard a cada 60 segundos
+  renderizarDashboard();
 }, 60000);
+
 
 
 //Pontuação
