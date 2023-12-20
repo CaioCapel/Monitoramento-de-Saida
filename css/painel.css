@@ -25,11 +25,13 @@
 .card {
   background-color: black;
   color: white;
-  padding: 5px;
-  margin: 2px;
+  padding: 15px;
+  margin: 5px auto;
   border-radius: 5px;
   border: 1px solid #015367;
   cursor: pointer;
+  text-transform:uppercase;
+  width: 40%;
   
 }
 
@@ -40,12 +42,16 @@
 }
 
 .card h2 {
-  font-size: 18px;
+  font-size: 20px;
+  color:rgb(33, 206, 206);
+  font-weight: bold;
+
 }
 
 .card p {
-  font-size: auto;
+  font-size: 18px;
   width: 100%;
+  margin-top: 7px;
 }
 
 * {
@@ -232,7 +238,17 @@ button:hover:active:before {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-left: 1%;
+  margin-top: 9px;
   outline: none;
+  user-select: none;
+
+}
+
+img{
+  width: 250px;
+  position: absolute;
+  left: 1px;
+  top: 1px;
 }
 
 @keyframes degrade {
