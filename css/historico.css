@@ -86,6 +86,57 @@ header {
   transition: all 0.5s ease-in-out;
 }
 
+/* Estilos do modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.644);
+  justify-content: center;
+  align-items: center;
+  color:rgb(33, 206, 206);
+}
+
+.modal-content {
+  background-color: white;
+  padding: 40px;
+  width: 20%;
+  height: 20%;
+  border: 1px solid #015367; /* Adiciona borda de 1px sólida a cabeçalhos e células da tabela */
+  background-color: rgba(0, 0, 0, 0.644);
+  border-radius: 5px;
+  text-align: center;
+  font-size: 25px;
+}
+
+/* Estilos dos botões do modal */
+#confirmYes , #confirmNo{
+  padding: 17px;
+  margin: 20px;
+  margin-top: 30px;
+  cursor: pointer;
+  background: none;
+  border: 1px solid #015367; /* Adiciona borda de 1px sólida a cabeçalhos e células da tabela */
+  color: white;
+  font-size: 18px;
+}
+
+#confirmNo:hover{
+  background-color: #009688;
+  transition: all 0.5s ease-in-out;
+
+}
+
+#confirmYes:hover{
+  background-color: #d32f2f;
+  transition: all 0.5s ease-in-out;
+
+}
+
+
 @media (max-width: 700px) {
 
   #voltarAoFormulario{
