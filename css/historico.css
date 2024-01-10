@@ -195,10 +195,11 @@ header {
 
   #confirmMessage{
     font-size: 20px;
-    position: fixed;
+    position: absolute;
     top: 41%;
-    left: 100px;
-    }
+    width: 55%;
+    justify-content: center;
+  }
 }
 
   
