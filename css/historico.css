@@ -120,8 +120,10 @@ header {
   cursor: pointer;
   background: none;
   border: 1px solid #015367; /* Adiciona borda de 1px sólida a cabeçalhos e células da tabela */
+  border-radius: 5px;
   color: white;
   font-size: 18px;
+  
 }
 
 #confirmNo:hover{
@@ -153,6 +155,50 @@ header {
   header{
     margin-top: 30%;
   }
+
+  .modal-content {
+    width: 70%;
+    height: 10%;
+    text-align: center;
+    font-size: 15px;
+  }
+
+#confirmYes{
+    padding: 10px;
+    top: 47%;
+    cursor: pointer;
+    background: none;
+    border: 1px solid #015367; /* Adiciona borda de 1px sólida a cabeçalhos e células da tabela */
+    color: white;
+    font-size: 17px;
+    width: 40%;
+    display: flex;
+    position: absolute;
+    left: 10px;
+    justify-content: center;
+  }
+
+#confirmNo{
+    padding: 10px;
+    top: 47%;
+    cursor: pointer;
+    background: none;
+    border: 1px solid #015367; /* Adiciona borda de 1px sólida a cabeçalhos e células da tabela */
+    color: white;
+    font-size: 17px;
+    width: 40%;
+    display: flex;
+    position: absolute;
+    right: 10px;
+    justify-content: center;
+  }
+
+  #confirmMessage{
+    font-size: 20px;
+    position: fixed;
+    top: 41%;
+    left: 100px;
+    }
 }
 
   
