@@ -1,5 +1,5 @@
 import { db } from "../js/firebase.js";
-import { collection, getDocs, doc, updateDoc } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+import { collection, getDocs, doc, updateDoc, addDoc, query, where, getDoc } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
 
 // Função para exibir registros no histórico
 async function exibirHistorico() {
@@ -8,30 +8,55 @@ async function exibirHistorico() {
 
   try {
     const querySnapshot = await getDocs(collection(db, "registro"));
-    querySnapshot.forEach((doc) => {
+    querySnapshot.forEach(async (doc) => {
       const data = doc.data();
-      
+
       // Verifique se o campo "excluído" é verdadeiro antes de exibir o registro
       if (!data.excluído) {
         const listItem = document.createElement("li");
         listItem.innerHTML = `${data.RE} - ${data.nome} - ${data.departamento} - ${data.hora}`;
-        
+
         // Botão para esconder o registro
         const hideButton = document.createElement("button");
         hideButton.textContent = "Excluir";
         hideButton.addEventListener("click", async () => {
-          const shouldHide = window.confirm("Tem certeza que deseja excluir este registro?");
-          if (shouldHide) {
-            try {
-              // Defina o campo "excluído" como true no Firestore em vez de excluir o documento
-              await updateDoc(doc.ref, { excluído: true });
-              exibirHistorico();
-            } catch (error) {
-              console.error("Erro ao excluir registro:", error);
+          const shouldDeleteWithPoints = window.confirm("Deseja excluir com pontos? [OK] - Sim [CANCELAR] - Não");
+
+          try {
+            // Defina o campo "excluído" como true no Firestore em vez de excluir o documento
+            await updateDoc(doc.ref, { excluído: true });
+
+            if (shouldDeleteWithPoints) {
+              // Consulta à coleção "pontos" para encontrar o documento correto
+              const pontosQuery = query(collection(db, "pontos"), where("nome", "==", data.nome));
+              const pontosSnapshot = await getDocs(pontosQuery);
+            
+              if (!pontosSnapshot.empty) {
+                // Se encontrou um documento na coleção "pontos", atualiza os pontos somando 1
+                const pontosDoc = pontosSnapshot.docs[0];
+                const pontosAtuais = pontosDoc.data().pontos || 0;
+            
+                // Adiciona 1 ponto
+                const novosPontos = pontosAtuais + 1;
+            
+                await updateDoc(pontosDoc.ref, {
+                  pontos: novosPontos
+                });
+              } else {
+                // Se não encontrou um documento na coleção "pontos", adiciona um novo com 1 ponto
+                await addDoc(collection(db, "pontos"), {
+                  nome: data.nome,
+                  pontos: 1
+                });
+              }
             }
+
+            exibirHistorico();
+          } catch (error) {
+            console.error("Erro ao excluir registro:", error);
           }
         });
-        
+
         listItem.appendChild(hideButton);
         historicoList.appendChild(listItem);
       }

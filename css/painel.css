@@ -1,7 +1,4 @@
 
-
-
-
 .dashboard {
   display: flex;
   flex-direction: column;
@@ -251,6 +248,35 @@ img{
   top: 1px;
 }
 
+#pontos-table{
+  position: absolute;
+  left: 10px;
+  top: 9.2%;
+  background-color: rgba(0, 0, 0, 0.644);
+  color: white;
+}
+#pontos-table td{
+  line-height: 2;
+  font-weight: 550;
+  border: 1px solid #015367; /* Adiciona borda de 1px sólida a cabeçalhos e células da tabela */
+  border-radius: 5px;
+  padding: 8px;
+}
+
+#pontos-table th{
+  text-align: left;
+  font-size: 20px;
+  color:rgb(33, 206, 206);
+  border: 1px solid #015367; /* Adiciona borda de 1px sólida a cabeçalhos e células da tabela */
+  border-radius: 5px;
+  padding: 8px;
+}
+
+
+.centralizado{
+  text-align: center;
+}
+
 @keyframes degrade {
   0%{
       background-position-x: 0%;
@@ -260,3 +286,5 @@ img{
       background-position: 400%;
   }
 }
+
+
