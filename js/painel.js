@@ -93,9 +93,18 @@ async function atualizarTabelaPontos() {
 
 
 
-// Chame as funções para renderizar o dashboard inicial e atualizar a tabela de pontos
-renderizarDashboard();
-atualizarTabelaPontos();
+// Função para renderizar o dashboard e atualizar a tabela de pontos
+function atualizarDados() {
+  renderizarDashboard();
+  atualizarTabelaPontos();
+}
 
-// Atualize a tabela de pontos a cada 60 segundos
-setInterval(atualizarTabelaPontos, 60000);
+// Chame as funções para renderizar o dashboard inicial e atualizar a tabela de pontos
+atualizarDados();
+
+// Atualize a tabela de pontos e o dashboard a cada 60 segundos
+setInterval(() => {
+  atualizarDados();
+  location.reload();  // Recarrega a página
+}, 60000);
+
