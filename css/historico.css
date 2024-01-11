@@ -138,6 +138,53 @@ header {
 
 }
 
+@media (max-width: 1920px){
+
+  .modal-content {
+    width: 30%;
+    height: 10%;
+    text-align: center;
+    font-size: 15px;
+  }
+
+#confirmYes{
+    padding: 10px;
+    top: 47%;
+    cursor: pointer;
+    background: none;
+    border: 1px solid #015367; /* Adiciona borda de 1px sólida a cabeçalhos e células da tabela */
+    color: white;
+    font-size: 17px;
+    width: 10%;
+    display: flex;
+    position: absolute;
+    justify-content: center;
+  }
+
+#confirmNo{
+    padding: 10px;
+    top: 47%;
+    cursor: pointer;
+    background: none;
+    border: 1px solid #015367; /* Adiciona borda de 1px sólida a cabeçalhos e células da tabela */
+    color: white;
+    font-size: 17px;
+    width: 10%;
+    right: 35%;
+    display: flex;
+    position: absolute;
+    justify-content: center;
+  }
+
+  #confirmMessage{
+    font-size: 20px;
+    position: absolute;
+    top: 41%;
+    width: 30%;
+  }
+
+}
+
 
 @media (max-width: 700px) {
 
