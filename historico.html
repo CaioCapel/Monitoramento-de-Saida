@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="img/Capturar-removebg-preview.png" >
-  <link rel="stylesheet" href="css/historico.css">
-  <title>Histórico de Registros</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/historico.css">
+    <link rel="shortcut icon" href="img/Capturar-removebg-preview.png" >
+    <title>Histórico de Registros</title>
 </head>
-
 <body>
   <header>
     <img src="img/Logo sem Fundo.png" alt="">
@@ -23,15 +21,29 @@
   </div>
 
   <!-- Modal para confirmação -->
-<div id="confirmModal" class="modal">
-  <div class="modal-content">
-    <p id="confirmMessage">Como deseja excluir?</p>
-    <button id="confirmYes">Com pontos</button>
-    <button id="confirmNo">Sem pontos</button>
+  <div id="confirmModal" class="modal">
+    <div class="modal-content">
+      <p id="confirmMessage">Deseja excluir com pontos?</p>
+      <button id="confirmYes">Sim, com pontos</button>
+      <button id="confirmNo">Não, sem pontos</button>
+    </div>
   </div>
-</div>
+<!--
+  
+  <table id="motivos-table">
+    <thead>
+      <tr>
+        <th>Data e Hora</th>
+        <th>Nome</th>
+        <th>Motivo da Exclusão</th>
+      </tr>
+    </thead>
+    <tbody id="motivos-table-body">
+     
+    </tbody>
+  </table>
+  -->
 
   <script src="js/historico.js" type="module"></script>
 </body>
-
 </html>

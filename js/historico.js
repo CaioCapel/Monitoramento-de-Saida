@@ -16,7 +16,7 @@ async function exibirHistorico() {
         const listItem = document.createElement("li");
         listItem.innerHTML = `${data.RE} - ${data.nome} - ${data.departamento} - ${data.hora}`;
 
-        // Botão para esconder o registro
+        // Botão para excluir o registro
         const hideButton = document.createElement("button");
         hideButton.textContent = "Excluir";
         hideButton.addEventListener("click", () => {
@@ -25,14 +25,21 @@ async function exibirHistorico() {
 
           // Evento de clique no botão "Sim, com pontos"
           document.getElementById("confirmYes").addEventListener("click", async () => {
-            // Lógica para excluir com pontos
-            await excluirRegistro(doc, data, true);
+            // Solicitar o motivo da exclusão
+            const motivo = prompt("Digite o motivo da exclusão:");
+
+            if (motivo) {
+              // Lógica para excluir com pontos e adicionar o motivo
+              await excluirRegistro(doc, data, true, motivo);
+            } else {
+              alert("O motivo da exclusão é obrigatório!");
+            }
           });
 
           // Evento de clique no botão "Não, sem pontos"
           document.getElementById("confirmNo").addEventListener("click", async () => {
-            // Lógica para excluir sem pontos
-            await excluirRegistro(doc, data, false);
+            // Lógica para excluir sem pontos e sem motivo
+            await excluirRegistro(doc, data, false, "");
           });
         });
 
@@ -46,7 +53,7 @@ async function exibirHistorico() {
 }
 
 // Função para excluir o registro com ou sem pontos
-async function excluirRegistro(doc, data, comPontos) {
+async function excluirRegistro(doc, data, comPontos, motivo) {
   try {
     // Defina o campo "excluído" como true no Firestore em vez de excluir o documento
     await updateDoc(doc.ref, { excluído: true });
@@ -74,9 +81,17 @@ async function excluirRegistro(doc, data, comPontos) {
           pontos: 1
         });
       }
+
+      // Adiciona o motivo da exclusão à coleção motivoExclusao
+      await addDoc(collection(db, "motivoExclusao"), {
+        nome: data.nome,
+        motivo: motivo,
+        hora: new Date().toLocaleString() // Adiciona a hora atual
+      });
     }
 
     exibirHistorico();
+    atualizarTabelaMotivosExclusao();
   } catch (error) {
     console.error("Erro ao excluir registro:", error);
   } finally {
@@ -94,11 +109,35 @@ function fecharModal() {
   document.getElementById("confirmNo").removeEventListener("click", () => {});
 }
 
-// Evento de clique no botão "Voltar ao Formulário"
-document.getElementById("voltarAoFormulario").addEventListener("click", function () {
-  // Redireciona o usuário para a página do formulário (substitua 'formulario.html' pelo caminho correto)
-  window.location.href = "form.html";
-});
+/*
+async function atualizarTabelaMotivosExclusao() {
+  const tabelaMotivos = document.getElementById("motivos-table-body");
+  tabelaMotivos.innerHTML = ""; 
+  try {
+    const querySnapshot = await getDocs(collection(db, "motivoExclusao"));
+    querySnapshot.forEach((doc) => {
+      const motivoData = doc.data();
+      const row = document.createElement("tr");
+      const nomeCell = document.createElement("td");
+      const motivoCell = document.createElement("td");
+      const horaCell = document.createElement("td");
 
-// Chama a função para exibir o histórico quando a página carrega
+      nomeCell.textContent = motivoData.nome;
+      motivoCell.textContent = motivoData.motivo;
+      horaCell.textContent = motivoData.hora;
+
+      row.appendChild(horaCell);
+      row.appendChild(nomeCell);
+      row.appendChild(motivoCell);
+      
+      tabelaMotivos.appendChild(row);
+    });
+  } catch (error) {
+    console.error("Erro ao buscar motivos de exclusão:", error);
+  }
+}
+*/
+
+// Chama a função para exibir o histórico e a tabela de motivos quando a página carrega
 exibirHistorico();
+atualizarTabelaMotivosExclusao();
