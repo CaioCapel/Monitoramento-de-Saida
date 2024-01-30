@@ -153,6 +153,13 @@ async function atualizarTabelaMotivosExclusao() {
 }
 
 
+// Função para voltar ao formulário
+document.getElementById("voltarAoFormulario").addEventListener("click", () => {
+  // Redireciona para a página do formulário
+  window.location.href = "./form.html";
+});
+
+
 
 // Chama a função para exibir o histórico e a tabela de motivos quando a página carrega
 exibirHistorico();
