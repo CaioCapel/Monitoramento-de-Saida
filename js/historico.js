@@ -109,7 +109,22 @@ function fecharModal() {
   document.getElementById("confirmNo").removeEventListener("click", () => {});
 }
 
-/*
+// Função para abrir ou fechar o modal de motivos de exclusão
+document.addEventListener("DOMContentLoaded", function() {
+  const motivosButton = document.getElementById("motivosButton");
+  const motivosModal = document.getElementById("motivosModal");
+
+  motivosButton.addEventListener("click", () => {
+    // Verifica se o modal está atualmente aberto
+    if (motivosModal.style.display === "block") {
+      motivosModal.style.display = "none"; // Fecha o modal se estiver aberto
+    } else {
+      motivosModal.style.display = "block"; // Abre o modal se estiver fechado
+    }
+  });
+});
+
+
 async function atualizarTabelaMotivosExclusao() {
   const tabelaMotivos = document.getElementById("motivos-table-body");
   tabelaMotivos.innerHTML = ""; 
@@ -136,7 +151,8 @@ async function atualizarTabelaMotivosExclusao() {
     console.error("Erro ao buscar motivos de exclusão:", error);
   }
 }
-*/
+
+
 
 // Chama a função para exibir o histórico e a tabela de motivos quando a página carrega
 exibirHistorico();

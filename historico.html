@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/historico.css">
+    <link rel="stylesheet" href="css/modal.css"> <!-- Adicionando estilo para o modal -->
     <link rel="shortcut icon" href="img/Capturar-removebg-preview.png" >
     <title>Histórico de Registros</title>
 </head>
@@ -28,21 +29,26 @@
       <button id="confirmNo">Não, sem pontos</button>
     </div>
   </div>
-<!--
-  
-  <table id="motivos-table">
-    <thead>
-      <tr>
-        <th>Data e Hora</th>
-        <th>Nome</th>
-        <th>Motivo da Exclusão</th>
-      </tr>
-    </thead>
-    <tbody id="motivos-table-body">
-     
-    </tbody>
-  </table>
-  -->
+
+  <!-- Botão para abrir o modal de motivos de exclusão -->
+  <button id="motivosButton" class="modal-btn">Motivos de Exclusão</button>
+
+  <!-- Modal para os motivos de exclusão -->
+  <div id="motivosModal" class="modal-motivos">
+      <table id="motivos-table" class="motivos-table">
+        <thead>
+          <tr>
+            <th>Data e Hora</th>
+            <th>Nome</th>
+            <th>Motivo da Exclusão</th>
+          </tr>
+        </thead>
+        <tbody id="motivos-table-body">
+          <!-- Os motivos de exclusão serão exibidos aqui -->
+        </tbody>
+      </table>
+    </div>
+  </div>
 
   <script src="js/historico.js" type="module"></script>
 </body>
