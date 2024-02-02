@@ -1,4 +1,5 @@
 import { db } from "../js/firebase.js";
+
 import { 
   collection, 
   getDocs, 
@@ -136,12 +137,17 @@ document.addEventListener("DOMContentLoaded", function() {
 // Função para atualizar a tabela de motivos de exclusão
 async function atualizarTabelaMotivosExclusao() {
   const tabelaMotivos = document.getElementById("motivos-table-body");
-  tabelaMotivos.innerHTML = ""; 
+  tabelaMotivos.innerHTML = "";
+
   try {
+
     // Consulta os motivos de exclusão ordenados pela hora em ordem decrescente
     const querySnapshot = await getDocs(query(collection(db, "motivoExclusao"), orderBy("hora", "asc")));
+
+
     querySnapshot.forEach((doc) => {
       const motivoData = doc.data();
+
       const row = document.createElement("tr");
       const nomeCell = document.createElement("td");
       const motivoCell = document.createElement("td");
@@ -154,13 +160,15 @@ async function atualizarTabelaMotivosExclusao() {
       row.appendChild(horaCell);
       row.appendChild(nomeCell);
       row.appendChild(motivoCell);
-      
+
       tabelaMotivos.appendChild(row);
     });
+
   } catch (error) {
     console.error("Erro ao buscar motivos de exclusão:", error);
   }
 }
+
 
 // Função para voltar ao formulário
 document.getElementById("voltarAoFormulario").addEventListener("click", () => {
