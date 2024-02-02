@@ -1,5 +1,14 @@
 import { db } from "../js/firebase.js";
-import { collection, getDocs, doc, updateDoc, addDoc, query, where, getDoc } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+import { 
+  collection, 
+  getDocs, 
+  doc, 
+  updateDoc, 
+  addDoc, 
+  query, 
+  where, 
+  orderBy // Importação do orderBy
+} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
 
 // Função para exibir registros no histórico
 async function exibirHistorico() {
@@ -124,12 +133,13 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
-
+// Função para atualizar a tabela de motivos de exclusão
 async function atualizarTabelaMotivosExclusao() {
   const tabelaMotivos = document.getElementById("motivos-table-body");
   tabelaMotivos.innerHTML = ""; 
   try {
-    const querySnapshot = await getDocs(collection(db, "motivoExclusao"));
+    // Consulta os motivos de exclusão ordenados pela hora em ordem decrescente
+    const querySnapshot = await getDocs(query(collection(db, "motivoExclusao"), orderBy("hora", "asc")));
     querySnapshot.forEach((doc) => {
       const motivoData = doc.data();
       const row = document.createElement("tr");
@@ -152,14 +162,11 @@ async function atualizarTabelaMotivosExclusao() {
   }
 }
 
-
 // Função para voltar ao formulário
 document.getElementById("voltarAoFormulario").addEventListener("click", () => {
   // Redireciona para a página do formulário
   window.location.href = "./form.html";
 });
-
-
 
 // Chama a função para exibir o histórico e a tabela de motivos quando a página carrega
 exibirHistorico();
