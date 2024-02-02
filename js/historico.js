@@ -1,5 +1,6 @@
 import { db } from "../js/firebase.js";
-import { collection, getDocs, doc, updateDoc, addDoc, query, where, getDoc } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+import { collection, getDocs, orderBy } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+import { query } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
 
 // Função para exibir registros no histórico
 async function exibirHistorico() {
@@ -127,11 +128,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
 async function atualizarTabelaMotivosExclusao() {
   const tabelaMotivos = document.getElementById("motivos-table-body");
-  tabelaMotivos.innerHTML = ""; 
+  tabelaMotivos.innerHTML = "";
+
   try {
-    const querySnapshot = await getDocs(collection(db, "motivoExclusao"));
+    const querySnapshot = await getDocs(
+      query(collection(db, "motivoExclusao"), orderBy("hora", "asc"))
+    );
+
     querySnapshot.forEach((doc) => {
       const motivoData = doc.data();
+
       const row = document.createElement("tr");
       const nomeCell = document.createElement("td");
       const motivoCell = document.createElement("td");
@@ -144,13 +150,18 @@ async function atualizarTabelaMotivosExclusao() {
       row.appendChild(horaCell);
       row.appendChild(nomeCell);
       row.appendChild(motivoCell);
-      
+
       tabelaMotivos.appendChild(row);
     });
+
   } catch (error) {
     console.error("Erro ao buscar motivos de exclusão:", error);
   }
 }
+
+
+
+
 
 
 // Função para voltar ao formulário
